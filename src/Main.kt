@@ -1,5 +1,5 @@
 fun main() {}
 
-fun isSudokuValid(): Boolean {
+fun isSudokuValid(sudokuBoard: List<List<Char>>): Boolean {
     return false
 }
