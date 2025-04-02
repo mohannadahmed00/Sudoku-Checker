@@ -14,8 +14,39 @@
 
     Extra: you can make the function dynamic and accept different size of the game like 4 * 4 or 16 * 16 not only 3 * 3
  */
-
 fun main() {
+    check(
+        name = "when enter Non-Square board return false",
+        result = isSudokuValid(
+            sudokuBoard = listOf(
+                listOf("5", "3", "-", "-", "7", "-", "-", "-", "-"),
+                listOf("6", "-", "-", "1", "4", "5", "-", "-", "-"),
+                listOf("-", "4", "8", "-", "-", "-", "-", "6", "-"),
+                listOf("8", "-", "-", "-", "6", "-", "-", "-", "3"),
+                listOf("4", "-", "-", "8", "-", "3", "-", "-", "1"),
+                listOf("7", "-", "-", "-", "2", "-", "-", "-", "6"),
+                listOf("-", "6", "-", "-", "-", "-", "2", "8", "-"),
+            )
+        ),
+        correctResult = false
+    )
+    check(
+        name = "when enter a sudoku with invalid character return false",
+        result = isSudokuValid(
+            sudokuBoard = listOf(
+                listOf("5", "3", "-", "-", "7", "-", "-", "-", "-"),
+                listOf("6", "-", "-", "1", "a", "5", "-", "-", "-"),
+                listOf("-", "9", "8", "-", "-", "-", "-", "6", "-"),
+                listOf("8", "-", "-", "-", "6", "-", "-", "-", "3"),
+                listOf("4", "-", "-", "8", "-", "3", "-", "-", "1"),
+                listOf("7", "-", "-", "-", "2", "-", "-", "-", "6"),
+                listOf("-", "6", "-", "-", "-", "-", "2", "8", "-"),
+                listOf("-", "-", "-", "4", "1", "9", "-", "-", "5"),
+                listOf("-", "-", "-", "-", "8", "-", "-", "7", "9")
+            )
+        ),
+        correctResult = false
+    )
     check(
         name = "when enter an empty sudoku return true", result = isSudokuValid(
             sudokuBoard = listOf(
@@ -208,7 +239,6 @@ fun main() {
         correctResult = false
     )
 }
-
 
 fun check(
     name: String,

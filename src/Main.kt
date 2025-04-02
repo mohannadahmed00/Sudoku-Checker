@@ -21,18 +21,20 @@ fun isValidRows(sudokuBoard: List<List<String>>): Boolean {
     sudokuBoard.forEach { row ->
         val seen = mutableListOf<String>()
         row.forEach { cell ->
-            if (isValidCell(cell, sudokuBoard.size, seen)) seen.add(cell)
+            if (!isValidCell(cell, sudokuBoard.size, seen)) return false
+            seen.add(cell)
         }
     }
     return true
 }
 
 fun isValidColumns(sudokuBoard: List<List<String>>): Boolean {
-    for (columnIndex in sudokuBoard[0].indices) {
+    for (columnIndex in sudokuBoard.indices) {
         val seen = mutableListOf<String>()
         sudokuBoard.forEach { row ->
             val cell = row[columnIndex]
-            if (isValidCell(cell, sudokuBoard.size, seen)) seen.add(cell)
+            if (!isValidCell(cell, sudokuBoard.size, seen)) return false
+            seen.add(cell)
         }
     }
     return true
@@ -48,11 +50,8 @@ fun isValidSubGrids(sudokuBoard: List<List<String>>): Boolean {
             for (x in horizontalRange) {
                 for (y in verticalRange) {
                     val cell = sudokuBoard[x][y]
-                    if (!isValidCell(cell, sudokuBoard.size, seen)) {
-                        return false
-                    } else {
-                        seen.add(cell)
-                    }
+                    if (!isValidCell(cell, sudokuBoard.size, seen)) return false
+                    seen.add(cell)
                 }
             }
         }
