@@ -1,11 +1,18 @@
 import kotlin.math.sqrt
 
 fun isSudokuValid(sudokuBoard: List<List<String>>): Boolean {
+    if (!isValidBoardDimensions(sudokuBoard)) return false
     if (isEmptyBoard(sudokuBoard)) return true
     if (!isValidRows(sudokuBoard)) return false
     if (!isValidColumns(sudokuBoard)) return false
     if (!isValidSubGrids(sudokuBoard)) return false
     return true
+}
+
+fun isValidBoardDimensions(sudokuBoard: List<List<String>>): Boolean {
+    val rows = sudokuBoard[0].size
+    val columns = sudokuBoard.size
+    return rows == columns
 }
 
 fun isEmptyBoard(sudokuBoard: List<List<String>>): Boolean {
